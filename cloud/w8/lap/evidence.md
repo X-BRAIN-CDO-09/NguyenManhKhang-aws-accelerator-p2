@@ -10,6 +10,7 @@ ALB (HTTP 80) → Target Group → EC2 instance (port 30080) → Minikube NodePo
 
 - `aws` provider: tạo VPC, subnet, IGW, route table, security group, EC2, ALB, target group, listener.
 - `null` provider: copy script và manifest vào EC2, chạy cài đặt Minikube/kubectl/docker và deploy app.
+- `tls` provider: Tạo cặp khóa SSH, Cung cấp khóa công khai  
 
 ## Cách chạy
 

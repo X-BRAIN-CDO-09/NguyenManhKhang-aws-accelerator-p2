@@ -9,8 +9,13 @@ terraform {
     null = {
       source = "hashicorp/null"
     }
+    tls = {
+      source  = "hashicorp/tls"
+      version = "~> 4.0"
+    }
   }
 }
+
 
 provider "aws" {
   region = var.aws_region
@@ -18,9 +23,16 @@ provider "aws" {
 
 provider "null" {}
 
+provider "tls" {}
+
+resource "tls_private_key" "pk" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
+}
+
 resource "aws_key_pair" "key" {
   key_name   = var.key_name
-  public_key = file(var.public_key_path)
+  public_key = tls_private_key.pk.public_key_openssh 
 }
 
 #################################################
@@ -319,7 +331,7 @@ resource "null_resource" "bootstrap" {
 
     host = aws_instance.minikube.public_ip
 
-    private_key = file(var.private_key_path)
+    private_key = tls_private_key.pk.private_key_pem
   }
 
   provisioner "file" {
