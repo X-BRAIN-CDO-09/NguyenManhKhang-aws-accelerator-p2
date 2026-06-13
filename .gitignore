@@ -1,0 +1,26 @@
+# Các file cấu hình cục bộ của Terraform khi chạy init
+.terraform/
+
+# File trạng thái (State) - CHỨA THÔNG TIN BẢO MẬT, TUYỆT ĐỐI KHÔNG PUSH LÊN GIT
+*.tfstate
+*.tfstate.*
+
+# File cấu hình biến (Variables) chứa thông tin nhạy cảm (Password, Secret Key, v.v.)
+*.tfvars
+*.tfvars.json
+
+# File override cấu hình cục bộ của cá nhân
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# File CLI cấu hình riêng (.terraformrc hoặc terraform.rc)
+.terraformrc
+terraform.rc
+
+# Các file log khi chạy lệnh
+*.log
+
+# File kế hoạch chạy (Plan output) - Thường chứa thông tin nhạy cảm nếu xuất ra file
+terraform.tfplan

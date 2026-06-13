@@ -1,0 +1,29 @@
+# ==========================================
+# 1. Các tệp tin cấu hình tạm thời của Terraform
+# ==========================================
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*
+
+# Bỏ qua các file biến số chứa thông tin bảo mật/gán quyền (nếu có)
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+*.terraform.lock.hcl
+
+# Bỏ qua file cấu hình CLI ẩn
+.terraformrc
+terraform.rc
+
+# ==========================================
+# 2. Bỏ qua các tệp ảnh bằng chứng (Evidence Images)
+# ==========================================
+# Không đẩy các file ảnh chụp màn hình kết quả Lab lên GitHub để tránh nặng kho lưu tr
+
+# Ngoại trừ tệp Markdown báo cáo vẫn được giữ lại để đẩy lên
+!*.md
